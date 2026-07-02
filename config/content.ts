@@ -1,4 +1,12 @@
-import { Briefcase, Megaphone, Rocket, Users, type LucideIcon } from "lucide-react"
+import {
+  Award,
+  Briefcase,
+  Handshake,
+  Megaphone,
+  Rocket,
+  Users,
+  type LucideIcon,
+} from "lucide-react"
 
 export interface StatItem {
   value: string
@@ -10,13 +18,6 @@ export interface ValuePropItem {
   title: string
   description: string
   icon: LucideIcon
-}
-
-export interface PartnerLogo {
-  name: string
-  src: string
-  width: number
-  height: number
 }
 
 export const audienceStats: StatItem[] = [
@@ -51,13 +52,18 @@ export const sponsorValueProps: ValuePropItem[] = [
       "Asóciate al ecosistema GDG y DevFest: la red global de desarrolladores respaldada por Google Developer Groups.",
     icon: Briefcase,
   },
-]
-
-export const pastSponsorLogos: PartnerLogo[] = [
-  { name: "Google", src: "/sponsors/google.svg", width: 120, height: 40 },
-  { name: "Google Cloud", src: "/sponsors/google-cloud.svg", width: 140, height: 40 },
-  { name: "USFQ", src: "/sponsors/usfq.svg", width: 100, height: 40 },
-  { name: "JetBrains", src: "/sponsors/jetbrains.svg", width: 120, height: 40 },
+  {
+    title: "Experto tech en la región",
+    description:
+      "Posiciónate como referente tecnológico ante la comunidad desarrolladora más activa de Ecuador y la región.",
+    icon: Award,
+  },
+  {
+    title: "Conexiones B2B tech",
+    description:
+      "Conecta con otras empresas del ecosistema que podrían adoptar, integrar o recomendar tus productos y servicios.",
+    icon: Handshake,
+  },
 ]
 
 export const contactTopics: string[] = [

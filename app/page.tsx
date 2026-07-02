@@ -4,7 +4,6 @@ import { DevFestHero } from "@/components/sections/devfest-hero"
 import { StatsGrid } from "@/components/sections/stats-grid"
 import { EventGallery } from "@/components/sections/event-gallery"
 import { SponsorValueProps } from "@/components/sections/sponsor-value-props"
-import { SponsorLogos } from "@/components/sections/sponsor-logos"
 import { CtaBand } from "@/components/sections/cta-band"
 import { siteConfig } from "@/config/site"
 
@@ -26,7 +25,6 @@ export default function HomePage() {
       <StatsGrid />
       <EventGallery />
       <SponsorValueProps />
-      <SponsorLogos />
       <CtaBand />
     </main>
   )
