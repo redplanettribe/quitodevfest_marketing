@@ -204,6 +204,26 @@
     0 16px 48px color-mix(in srgb, var(--devfest-black) 10%, transparent);
 }
 
+.event-photo-overlay {
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--devfest-off-white) 24%, transparent) 0%,
+      color-mix(in srgb, var(--devfest-off-white) 10%, transparent) 45%,
+      color-mix(in srgb, var(--devfest-off-white) 42%, transparent) 100%
+    );
+}
+
+.event-photo-overlay-strong {
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--devfest-off-white) 35%, transparent) 0%,
+      color-mix(in srgb, var(--devfest-off-white) 18%, transparent) 50%,
+      color-mix(in srgb, var(--devfest-off-white) 55%, transparent) 100%
+    );
+}
+
 .hero-partners-strip {
   background: color-mix(in srgb, var(--devfest-off-white) 78%, transparent);
   backdrop-filter: blur(10px);

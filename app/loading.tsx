@@ -21,10 +21,29 @@ export default function HomeLoading() {
       </Section>
       <Section className="bg-devfest-pastel-blue/40">
         <Container>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <Skeleton key={i} className="h-32 w-full rounded-xl" />
-            ))}
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div className="space-y-4">
+              <Skeleton className="h-4 w-24" />
+              <Skeleton className="h-10 w-72" />
+              <Skeleton className="h-5 w-full max-w-md" />
+              <div className="grid gap-4 sm:grid-cols-2">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <Skeleton key={i} className="h-32 w-full rounded-xl" />
+                ))}
+              </div>
+            </div>
+            <Skeleton className="aspect-[4/3] w-full rounded-2xl lg:min-h-[420px]" />
+          </div>
+        </Container>
+      </Section>
+      <Section className="bg-devfest-pastel-yellow/25">
+        <Container>
+          <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:grid-rows-[1fr_1fr_auto_auto] sm:gap-3">
+            <Skeleton className="min-h-[220px] rounded-xl sm:col-span-2 sm:row-span-2" />
+            <Skeleton className="min-h-[180px] rounded-xl sm:col-start-3 sm:row-start-1" />
+            <Skeleton className="min-h-[180px] rounded-xl sm:col-start-3 sm:row-start-2" />
+            <Skeleton className="min-h-[220px] rounded-xl sm:col-span-3 sm:row-start-3" />
+            <Skeleton className="min-h-[220px] rounded-xl sm:col-span-3 sm:row-start-4" />
           </div>
         </Container>
       </Section>

@@ -23,7 +23,7 @@ export const eventConfig = {
     logo: "/devfest-logo.svg",
     logoWithLocation: "/logo-with-location.svg",
     heroVideo: "/hero-loop.mp4",
-    heroPoster: "/hero-poster.svg",
+    heroPoster: "/event-photos/K7400577_result.jpg",
   },
   backers: [
     {

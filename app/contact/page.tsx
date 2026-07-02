@@ -21,6 +21,7 @@ export default function ContactPage() {
         label="// contacto"
         title="Hablemos de patrocinio"
         description="Completa el formulario o escríbenos directamente. Te ayudamos a encontrar el paquete ideal para tu empresa."
+        photoId="registration"
       />
       <Section>
         <Container size="md">

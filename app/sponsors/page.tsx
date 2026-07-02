@@ -19,6 +19,7 @@ export default function SponsorsPage() {
         label="// patrocinadores"
         title="Paquetes de patrocinio"
         description="Elige el nivel de visibilidad y activación que mejor se alinee con los objetivos de tu empresa. Todos los paquetes son personalizables."
+        photoId="community-group"
       />
       <SponsorTiers />
       <SponsorFaq />
