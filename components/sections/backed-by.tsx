@@ -36,11 +36,15 @@ interface PartnerGroup {
 }
 
 const LOGO_ROW_HEIGHT_PX = 52
+const STRIP_LOGO_ROW_HEIGHT_PX = 40
 
 const defaultLogoDisplay: PartnerLogoDisplay = {
   maxHeight: 38,
   maxWidth: 120,
 }
+
+const stripLogoGapClass = "gap-x-3 sm:gap-x-4"
+const gridLogoGapClass = "gap-x-5 sm:gap-x-6"
 
 const labelClass = (variant: "light" | "dark") =>
   cn(
@@ -102,17 +106,19 @@ function PartnerLogo({ partner, variant }: PartnerLogoProps) {
 function PartnerLogoRow({
   partners,
   variant,
+  layout = "grid",
 }: {
   partners: PartnerLogoSet[]
   variant: "light" | "dark"
+  layout?: BackedByProps["layout"]
 }) {
+  const rowHeight = layout === "strip" ? STRIP_LOGO_ROW_HEIGHT_PX : LOGO_ROW_HEIGHT_PX
+  const gapClass = layout === "strip" ? stripLogoGapClass : gridLogoGapClass
+
   return (
     <div
-      className={cn(
-        "flex items-center justify-center",
-        partners.length > 1 ? "gap-x-5 sm:gap-x-6" : "",
-      )}
-      style={{ height: LOGO_ROW_HEIGHT_PX }}
+      className={cn("flex items-center justify-center", partners.length > 1 ? gapClass : "")}
+      style={{ height: rowHeight }}
     >
       {partners.map((partner) => (
         <PartnerLogo key={partner.name} partner={partner} variant={variant} />
@@ -132,15 +138,24 @@ function cellDivider(variant: "light" | "dark", index: number) {
 function PartnerSectionLayout({
   groups,
   variant,
+  layout = "grid",
   mobileDividerClass,
 }: {
   groups: PartnerGroup[]
   variant: "light" | "dark"
+  layout?: BackedByProps["layout"]
   mobileDividerClass?: string
 }) {
   const mobileDivider =
     mobileDividerClass ??
     (variant === "dark" ? "border-t border-white/10" : "border-t border-devfest-black/8")
+
+  const desktopGridClass =
+    layout === "strip"
+      ? "hidden gap-y-2 sm:grid sm:grid-cols-3 sm:grid-rows-[auto_auto] sm:items-center"
+      : "hidden gap-y-3 sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] sm:grid-rows-[auto_auto] sm:items-center"
+
+  const cellPaddingClass = layout === "strip" ? "px-2.5" : "px-4"
 
   return (
     <>
@@ -149,17 +164,17 @@ function PartnerSectionLayout({
           <div key={group.label} className={cn(index > 0 && mobileDivider, index > 0 && "pt-4")}>
             <p className={labelClass(variant)}>{group.label}</p>
             <div className="mt-2">
-              <PartnerLogoRow partners={group.partners} variant={variant} />
+              <PartnerLogoRow partners={group.partners} variant={variant} layout={layout} />
             </div>
           </div>
         ))}
       </div>
 
-      <div className="hidden gap-y-3 sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] sm:grid-rows-[auto_auto] sm:items-center">
+      <div className={desktopGridClass}>
         {groups.map((group, index) => (
           <p
             key={`${group.label}-label`}
-            className={cn(labelClass(variant), "px-4", cellDivider(variant, index))}
+            className={cn(labelClass(variant), cellPaddingClass, cellDivider(variant, index))}
           >
             {group.label}
           </p>
@@ -168,9 +183,9 @@ function PartnerSectionLayout({
         {groups.map((group, index) => (
           <div
             key={`${group.label}-logos`}
-            className={cn("flex justify-center px-4", cellDivider(variant, index))}
+            className={cn("flex justify-center", cellPaddingClass, cellDivider(variant, index))}
           >
-            <PartnerLogoRow partners={group.partners} variant={variant} />
+            <PartnerLogoRow partners={group.partners} variant={variant} layout={layout} />
           </div>
         ))}
       </div>
@@ -178,22 +193,38 @@ function PartnerSectionLayout({
   )
 }
 
-function PartnerStrip({ groups, variant }: { groups: PartnerGroup[]; variant: "light" | "dark" }) {
+function PartnerStrip({
+  groups,
+  variant,
+  layout,
+}: {
+  groups: PartnerGroup[]
+  variant: "light" | "dark"
+  layout: BackedByProps["layout"]
+}) {
   return (
     <div
       className={cn(
-        "w-full rounded-xl border px-4 py-4 sm:px-5 sm:py-4",
+        "w-full rounded-xl border px-3 py-3.5 sm:px-4 sm:py-4",
         variant === "dark"
           ? "border-white/10 bg-white/5"
           : "hero-partners-strip border-devfest-black/8",
       )}
     >
-      <PartnerSectionLayout groups={groups} variant={variant} />
+      <PartnerSectionLayout groups={groups} variant={variant} layout={layout} />
     </div>
   )
 }
 
-function PartnerGrid({ groups, variant }: { groups: PartnerGroup[]; variant: "light" | "dark" }) {
+function PartnerGrid({
+  groups,
+  variant,
+  layout,
+}: {
+  groups: PartnerGroup[]
+  variant: "light" | "dark"
+  layout: BackedByProps["layout"]
+}) {
   return (
     <div
       className={cn(
@@ -202,16 +233,16 @@ function PartnerGrid({ groups, variant }: { groups: PartnerGroup[]; variant: "li
           : "sm:rounded-xl sm:border sm:border-devfest-black/8 sm:px-5 sm:py-4",
       )}
     >
-      <PartnerSectionLayout groups={groups} variant={variant} />
+      <PartnerSectionLayout groups={groups} variant={variant} layout={layout} />
     </div>
   )
 }
 
 export function BackedBy({ variant = "light", layout = "grid", className }: BackedByProps) {
-  const { backer, allies, poweredBy } = eventConfig
+  const { backers, allies, poweredBy } = eventConfig
 
   const groups: PartnerGroup[] = [
-    { label: "Respaldado por", partners: [backer] },
+    { label: "Respaldado por", partners: backers },
     { label: "En alianza con", partners: allies },
     { label: "Powered by", partners: poweredBy },
   ]
@@ -219,9 +250,9 @@ export function BackedBy({ variant = "light", layout = "grid", className }: Back
   return (
     <div className={className}>
       {layout === "strip" ? (
-        <PartnerStrip groups={groups} variant={variant} />
+        <PartnerStrip groups={groups} variant={variant} layout={layout} />
       ) : (
-        <PartnerGrid groups={groups} variant={variant} />
+        <PartnerGrid groups={groups} variant={variant} layout={layout} />
       )}
     </div>
   )

@@ -25,20 +25,34 @@ export const eventConfig = {
     heroVideo: "/hero-loop.mp4",
     heroPoster: "/hero-poster.svg",
   },
-  backer: {
-    name: "RedPlanetTribe",
-    url: "https://redplanettribe.org/",
-    description:
-      "Impulsa comunidades de software, forma talento y conecta oportunidades en el ecosistema tech ecuatoriano.",
-    logo: "/partners/redplanettribe.svg",
-    logoInverse: "/partners/redplanettribe-inverse.svg",
-    logoWidth: 453,
-    logoHeight: 230,
-    logoDisplay: {
-      maxHeight: 38,
-      maxWidth: 118,
+  backers: [
+    {
+      name: "RedPlanetTribe",
+      url: "https://redplanettribe.org/",
+      description:
+        "Impulsa comunidades de software, forma talento y conecta oportunidades en el ecosistema tech ecuatoriano.",
+      logo: "/partners/redplanettribe.svg",
+      logoInverse: "/partners/redplanettribe-inverse.svg",
+      logoWidth: 453,
+      logoHeight: 230,
+      logoDisplay: {
+        maxHeight: 28,
+        maxWidth: 96,
+      },
     },
-  },
+    {
+      name: "Google",
+      url: "https://developers.google.com/community/gdg",
+      logo: "/Google_2015_logo.svg",
+      logoInverse: "/Google_2015_logo.svg",
+      logoWidth: 272,
+      logoHeight: 92,
+      logoDisplay: {
+        maxHeight: 24,
+        maxWidth: 72,
+      },
+    },
+  ],
   allies: [
     {
       name: "Kinemotion",
@@ -47,8 +61,8 @@ export const eventConfig = {
       logoWidth: 297,
       logoHeight: 210,
       logoDisplay: {
-        maxHeight: 50,
-        maxWidth: 92,
+        maxHeight: 30,
+        maxWidth: 72,
       },
     },
     {
@@ -60,8 +74,8 @@ export const eventConfig = {
       logoInverseWidth: 185,
       logoInverseHeight: 39,
       logoDisplay: {
-        maxHeight: 34,
-        maxWidth: 132,
+        maxHeight: 26,
+        maxWidth: 108,
       },
     },
   ],
@@ -74,8 +88,8 @@ export const eventConfig = {
       logoWidth: 220,
       logoHeight: 32,
       logoDisplay: {
-        maxHeight: 32,
-        maxWidth: 104,
+        maxHeight: 26,
+        maxWidth: 88,
       },
     },
   ],

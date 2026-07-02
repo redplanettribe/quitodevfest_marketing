@@ -76,7 +76,7 @@ export function DevFestHero() {
             </div>
           </div>
 
-          <BackedBy layout="strip" className="mt-6 w-full max-w-3xl sm:mt-8" />
+          <BackedBy layout="strip" className="mt-6 w-full max-w-4xl sm:mt-8" />
         </div>
       </Container>
     </Section>
