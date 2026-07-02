@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Patrocina DevFest 2026 en Quito: la conferencia tecnológica más grande del ecosistema Google Developer Groups en Ecuador. Conecta tu marca con desarrolladores, líderes de innovación y talento tech.",
   url: "https://devfestquito.com/",
-  ogImage: "/opengraph-image.svg",
+  ogImage: "/opengraph-image.jpg",
   contactEmail: "info@redplanettribe.org",
   keywords: [
     "DevFest",
