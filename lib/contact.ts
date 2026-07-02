@@ -15,24 +15,6 @@ export function contactMailto({ subject, body }: ContactMailtoOptions = {}): str
   return query ? `mailto:${CONTACT_EMAIL}?${query}` : `mailto:${CONTACT_EMAIL}`
 }
 
-export const projectInquiryMailto = contactMailto({ subject: "Project inquiry" })
-
-export const projectInquiryWithTemplateMailto = contactMailto({
-  subject: "Project inquiry",
-  body: [
-    "Hi Citus team,",
-    "",
-    "I'd like to discuss:",
-    "",
-    "- What I'm building: ",
-    "- Current stage: ",
-    "- Timeline: ",
-    "- Budget range: ",
-    "",
-    "Thanks!",
-  ].join("\n"),
-})
-
 export function gmailComposeUrl({ subject, body }: ContactMailtoOptions = {}): string {
   const params = new URLSearchParams({
     view: "cm",
@@ -43,7 +25,3 @@ export function gmailComposeUrl({ subject, body }: ContactMailtoOptions = {}): s
   if (body) params.set("body", body)
   return `https://mail.google.com/mail/?${params.toString()}`
 }
-
-export const projectInquiryGmailUrl = gmailComposeUrl({ subject: "Project inquiry" })
-
-export const CONTACT_PAGE_PATH = "/contact/"

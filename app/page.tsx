@@ -1,32 +1,27 @@
 import { generateSEO } from "@/lib/seo"
-import { organizationSchema } from "@/lib/schema"
-import { HomeHero } from "@/components/sections/home-hero"
-import { ServicesGrid } from "@/components/sections/services-grid"
-import { ProcessStrip } from "@/components/sections/process-strip"
-import { BrandStory } from "@/components/sections/brand-story"
-import { CtaBand } from "@/components/sections/cta-band"
+import { Section } from "@/components/ui/section"
+import { Container } from "@/components/ui/container"
+import { siteConfig } from "@/config/site"
 
 export const metadata = generateSEO({
-  title: "Software Factory",
-  description:
-    "Citus is a software factory that builds and ships product-grade software with speed and intent—from concept to production, citus.",
+  title: "Home",
+  description: siteConfig.description,
   url: "/",
 })
 
 export default function HomePage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <main id="main-content">
-        <HomeHero />
-        <ServicesGrid showViewAll />
-        <ProcessStrip showLink />
-        <BrandStory />
-        <CtaBand />
-      </main>
-    </>
+    <main id="main-content">
+      <Section>
+        <Container>
+          <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+            {siteConfig.name}
+          </h1>
+          <p className="mt-4 max-w-prose text-muted-foreground">
+            Your content goes here.
+          </p>
+        </Container>
+      </Section>
+    </main>
   )
 }

@@ -1,0 +1,23 @@
+{
+  "skill_name": "devfest-brand-ui",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Build a hero section for the DevFest 2026 Quito homepage with the event title, date (26 Sept 2026), venue, a Register CTA, and developer glyph decorations in the background.",
+      "expected_output": "A React Server Component using Section/Container, DevFest palette tokens (not legacy orange), location pill below wordmark, mono glyphs as aria-hidden decor, and accessible Image/CTA markup.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Review components/sections/home-hero.tsx and components/ui/cta-button.tsx for DevFest 2026 brand compliance. List every violation in file:line format.",
+      "expected_output": "Terse audit flagging legacy #e8551c CTA colors, missing location badge, non-DevFest glyphs/copy, and any hardcoded hex outside the official palette.",
+      "files": ["components/sections/home-hero.tsx", "components/ui/cta-button.tsx"]
+    },
+    {
+      "id": 2,
+      "prompt": "Add DevFest 2026 brand color tokens to app/globals.css and create a speaker card component with photo, name (2-line target), and talk title — use pastel green background with core green accents.",
+      "expected_output": "globals.css updated with --devfest-* variables and @theme inline mappings; new SpeakerCard component using token classes only, proper Image dimensions, and typography line limits.",
+      "files": ["app/globals.css"]
+    }
+  ]
+}

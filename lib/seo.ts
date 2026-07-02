@@ -4,7 +4,6 @@ import { siteConfig } from "@/config/site"
 interface SEOProps {
   title?: string
   description?: string
-  image?: string
   url?: string
   noIndex?: boolean
   keywords?: string[]
@@ -13,7 +12,6 @@ interface SEOProps {
 export function generateSEO({
   title,
   description = siteConfig.description,
-  image = siteConfig.ogImage,
   url,
   noIndex = false,
   keywords = [],
@@ -33,23 +31,14 @@ export function generateSEO({
       title: seoTitle,
       description,
       siteName: siteConfig.name,
-      images: [
-        {
-          url: image.startsWith("http") ? image : `${siteConfig.url}${image}`,
-          width: 1200,
-          height: 630,
-          alt: title || siteConfig.name,
-        },
-      ],
     },
     alternates: {
       canonical: seoUrl,
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title: seoTitle,
       description,
-      images: [image.startsWith("http") ? image : `${siteConfig.url}${image}`],
     },
     robots: {
       index: !noIndex,

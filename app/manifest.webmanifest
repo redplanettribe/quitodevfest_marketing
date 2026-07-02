@@ -1,23 +1,9 @@
 {
-  "name": "Citus",
-  "short_name": "Citus",
-  "description": "Citus is a software factory that builds and ships product-grade software with speed and intent.",
+  "name": "DevFest",
+  "short_name": "DevFest",
+  "description": "A brief description of your site.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",
-  "theme_color": "#e8551c",
-  "icons": [
-    {
-      "src": "/favicon-light.svg",
-      "type": "image/svg+xml",
-      "sizes": "any",
-      "purpose": "any"
-    },
-    {
-      "src": "/favicon-dark.svg",
-      "type": "image/svg+xml",
-      "sizes": "any",
-      "purpose": "maskable"
-    }
-  ]
+  "theme_color": "#e8551c"
 }

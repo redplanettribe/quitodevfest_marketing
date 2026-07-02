@@ -16,7 +16,6 @@ export const organizationSchema = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
-  logo: `${siteConfig.url}isotipo.svg`,
   email: CONTACT_EMAIL,
   contactPoint: {
     "@type": "ContactPoint",

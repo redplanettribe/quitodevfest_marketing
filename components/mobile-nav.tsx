@@ -3,7 +3,6 @@
 import { Menu } from "lucide-react"
 import { Logo } from "@/components/ui/logo"
 import { NavLinks } from "@/components/nav-links"
-import { CTAButton } from "@/components/ui/cta-button"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -12,7 +11,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { CONTACT_PAGE_PATH } from "@/lib/contact"
 
 export function MobileNav() {
   return (
@@ -34,13 +32,6 @@ export function MobileNav() {
         <div className="mt-8 flex flex-col gap-8">
           <Logo />
           <NavLinks className="flex-col items-start gap-4" />
-          <CTAButton
-            href={CONTACT_PAGE_PATH}
-            size="default"
-            className="w-full justify-center"
-          >
-            Start a project
-          </CTAButton>
         </div>
       </SheetContent>
     </Sheet>

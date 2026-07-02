@@ -38,10 +38,9 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}${siteConfig.ogImage}`],
   },
   robots: {
     index: true,
@@ -53,26 +52,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  icons: {
-    icon: [
-      {
-        url: "/favicon-light.svg",
-        type: "image/svg+xml",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/favicon-dark.svg",
-        type: "image/svg+xml",
-        media: "(prefers-color-scheme: dark)",
-      },
-    ],
-    apple: [
-      {
-        url: "/favicon-light.svg",
-        type: "image/svg+xml",
-      },
-    ],
   },
   manifest: "/manifest.webmanifest",
 }
