@@ -1,0 +1,103 @@
+---
+description: Static Next.js 15 export constraints — RSC boundaries, images, URLs, and build verification.
+alwaysApply: true
+---
+
+# Static Next.js Constraints
+
+This is a fully static marketing site (`output: 'export'` in `next.config.mjs`). All code must be compatible with static generation.
+
+## Forbidden (runtime server features)
+
+- `headers()`, `cookies()`, `draftMode()`
+- `dynamic = 'force-dynamic'`
+- Route Handlers that require a live server
+- Uncached `fetch()` at build time without `generateStaticParams` for dynamic segments
+- Any API that assumes per-request server rendering
+
+## Static Export Settings
+
+From `next.config.mjs`:
+- `output: 'export'` — produces static HTML/CSS/JS only
+- `trailingSlash: true` — all internal links and canonical URLs end with `/`
+- `images.unoptimized: true` — use Next.js `<Image />` with explicit `width`, `height`, and `alt` for CLS = 0
+
+## TypeScript & Component Execution Loop
+
+### Strict typing
+
+- No implicit `any`
+- Define descriptive `interface` or `type` for every functional component's props
+- Export prop types when components are reused across routes
+
+### Server vs. client primitives
+
+- Leave components as **React Server Components (RSC) by default**
+- Append `'use client'` at the **absolute top** of a file only when it needs:
+  - Interactive state hooks (`useState`, `useEffect`, `useRef` with DOM access)
+  - Browser APIs
+  - Interactive Radix/Shadcn primitives
+  - Framer Motion variants (only if `framer-motion` is in `package.json`)
+- Never add `'use client'` to files that only render static markup
+
+### Automated verification
+
+Before concluding any prompt delivery, confirm the project compiles cleanly:
+
+```bash
+pnpm run build
+# or: npm run build
+```
+
+Fix all type-checking and build failures. Do not leave broken static export output.
+
+## Images
+
+```tsx
+import Image from "next/image"
+
+<Image
+  src="/hero.png"
+  alt="Descriptive alt text"
+  width={1200}
+  height={630}
+  className="..."
+/>
+```
+
+Always provide `width`, `height`, and meaningful `alt`. No layout-shifting images.
+
+## Code Conventions
+
+- Path alias: `@/*` maps to project root
+- Class merging: `cn()` from `@/lib/utils`
+- Icons: named Lucide imports (`import { ArrowRight } from "lucide-react"`)
+- Site config: `config/site.ts`
+- SEO helper: `generateSEO()` from `lib/seo.ts`
+- Styling: Tailwind v4 via `app/globals.css` tokens (no `tailwind.config.*`)
+
+## Loading & Fallbacks
+
+Always supply a matching `loading.tsx` sibling for every route under `app/`:
+
+```
+app/about/page.tsx
+app/about/loading.tsx   ← required
+```
+
+The skeleton must mirror the page layout (same `Section` + `Container` structure, heading blocks, card grids) so the first paint feels instant and layout shift stays near zero.
+
+## New Page Checklist
+
+1. Create `app/[route]/page.tsx` with `generateSEO()` metadata
+2. Add sibling `loading.tsx` with a layout-matched skeleton
+3. Register URL in `app/sitemap.ts`
+4. Use `Section` + `Container` layout primitives
+5. Run `pnpm run build` (or `npm run build`) and fix all errors
+
+## Stack Reference
+
+- Next.js 15 (App Router), React 18, TypeScript 5
+- Tailwind CSS 4 (`@tailwindcss/postcss`)
+- Shadcn/ui (new-york style) + Radix UI primitives
+- Package manager: `pnpm`

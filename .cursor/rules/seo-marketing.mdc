@@ -1,0 +1,102 @@
+---
+description: SEO rules for static Citus marketing pages — metadata, structure, structured data, and sitemap.
+globs: app/**/*.tsx, app/**/*.ts, config/site.ts, lib/seo.ts, lib/schema.ts
+alwaysApply: false
+---
+
+# Citus Marketing SEO
+
+Every page must be indexable, shareable, and structurally sound. SEO is not optional on a marketing site.
+
+## Site Configuration
+
+Single source of truth: `config/site.ts`
+
+Update once: `name`, `description`, `url`, `ogImage`, `keywords`.
+
+All metadata helpers read from this file — never hardcode site name or URL in page components.
+
+## Per-Page Metadata (required)
+
+Every route under `app/` exports metadata via `generateSEO()` from `@/lib/seo`:
+
+```ts
+import { generateSEO } from "@/lib/seo"
+
+export const metadata = generateSEO({
+  title: "Page Title",       // ≤ ~50 chars (before `| Site Name` suffix)
+  description: "...",        // 150–160 chars, unique per page
+  url: "/about/",            // trailing slash — matches next.config trailingSlash
+  keywords: ["optional"],    // page-specific keywords merged with siteConfig.keywords
+})
+```
+
+`generateSEO()` provides: title, description, OpenGraph, Twitter card, canonical (`alternates.canonical`), and robots directives.
+
+Root layout (`app/layout.tsx`) already sets `metadataBase`, `title.template`, default OG, and robots. Extend at page level — do not duplicate globals.
+
+## On-Page Structure
+
+- **One `<h1>` per page** — matches the page's primary intent and metadata title.
+- Logical heading hierarchy: `h2` → `h3`. Never skip levels.
+- **Images:** every `<Image />` needs meaningful `alt` text. OG images are 1200×630 (`siteConfig.ogImage` → `/public/opengraph-image.png`).
+- **Internal links:** descriptive anchor text ("View pricing plans"), not "click here".
+- **`lang="en"`** on `<html>` (already set in layout).
+
+## Semantic HTML
+
+Use landmarks, not div soup:
+
+```tsx
+<header>...</header>
+<main id="main-content">...</main>
+<footer>...</footer>
+```
+
+Section content inside `<section>` with optional `id` for anchor links (e.g. `id="features"`).
+
+## Structured Data (JSON-LD)
+
+Global `WebSite` schema lives in `lib/schema.ts` and is injected in `app/layout.tsx`.
+
+Extend `lib/schema.ts` with page-specific schemas when relevant:
+- `Organization` — homepage
+- `FAQPage` — FAQ sections
+- `BreadcrumbList` — nested pages
+
+Inject page-specific JSON-LD in the page or layout `<head>`:
+
+```tsx
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(mySchema) }}
+/>
+```
+
+## New Route Checklist
+
+When adding a page under `app/`:
+
+1. Export `metadata` via `generateSEO()` with unique title, description, canonical URL
+2. Add `loading.tsx` sibling for instant skeleton (zero layout shift)
+3. Add URL entry to `app/sitemap.ts` with `changeFrequency` and `priority`
+4. Ensure `app/robots.ts` sitemap reference remains valid (already points to sitemap)
+5. One `<h1>`, logical heading tree, all images have `alt`
+
+## Static SEO Files
+
+| File | Purpose |
+|------|---------|
+| `app/sitemap.ts` | Lists all indexable URLs (`force-static`) |
+| `app/robots.ts` | Allow indexing, reference sitemap |
+| `app/manifest.webmanifest` | PWA manifest |
+| `public/opengraph-image.png` | Default OG image (1200×630) |
+
+## NEVER
+
+- Pages without `export const metadata`
+- Duplicate or missing canonical URLs
+- Multiple `<h1>` elements per page
+- Missing `alt` on content images
+- `noIndex: true` on public marketing pages (unless explicitly requested)
+- Hardcoded `https://example.com` — always use `siteConfig.url`

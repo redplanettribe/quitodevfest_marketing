@@ -1,0 +1,145 @@
+---
+description: UI design rules for polished, distinctive Citus marketing pages — brand identity, tokens, layout, craft, and accessibility.
+globs: app/**/*.tsx, components/**/*.tsx, app/globals.css
+alwaysApply: false
+---
+
+# Citus Marketing UI Design
+
+You build confident, crafted marketing UI for a dev-tool brand — high-contrast orange accents on dark charcoal, code-native cues, generous whitespace, clear hierarchy. Not generic blue-gray or purple SaaS dashboards.
+
+## Brand Identity (Citus)
+
+**Personality:** Modern dev-tool marketing — precise, code-native, high impact. Confident and technical, not playful or corporate.
+
+**Logo accent:** `#e8551c` — the canonical brand orange. Defined as `--cta-primary` in `app/globals.css`. Maximum impact on dark gray backgrounds.
+
+**Theme:** Dark-first. `<html>` carries the `dark` class by default. Surfaces are deep charcoal (`--background`, `--card`, `--muted`), not flat pure black everywhere. Light mode tokens exist in `:root` but dark is the default experience.
+
+**Accent usage:**
+- CTAs, key links, focus rings, hero highlights: brand orange via `--cta-primary`
+- Hero gradients: `--cta-primary` → `--cta-secondary` (warm amber-orange family only)
+- Tinted section backgrounds: `bg-[var(--cta-lighter)]` or `bg-muted/50`
+- One accent family per section — never stack competing colors
+
+**Logo geometry:** Angular, hex-adjacent (60°/120°). Echo through subtle bracket/chevron decorative patterns in heroes — at most one motif per page. Nested panels suggest the logo's layered chevron.
+
+**Code-native cues:**
+- Monospace (`font-mono` / JetBrains Mono) for code snippets, CLI output, API labels, and tech badges
+- Terminal-style micro-labels sparingly (`$`, `>`, angle brackets) — decorative only, never essential copy
+- Sans-serif (Inter) for all marketing prose and headings
+
+## UI Design System & Component Guidelines
+
+### Modern aesthetic
+
+Lean into clean minimalism with dev-tool precision:
+- Subtle gradients from CTA tokens — never loud rainbow stacks or purple accents
+- **Cards and marketing surfaces:** `rounded-xl` (`rounded-lg` for compact controls)
+- **Code-adjacent UI** (badges, code blocks, terminal panels): sharper corners — `rounded-sm` or `rounded-md`
+- Micro-shadows: `shadow-sm` on resting cards, `shadow-md` on hover — low opacity, restrained elevation
+
+### Banned styling practices
+
+Do not mix styling approaches. One system only: Tailwind utility classes backed by `app/globals.css` tokens.
+
+- **NO** CSS modules
+- **NO** raw inline `style={{}}`
+- **NO** arbitrary Tailwind strings (`w-[437px]`, `text-[13px]`) unless a documented token has no utility equivalent
+
+### Interactions (required)
+
+Every interactive element (`<button>`, `<a>`) must have tactile feedback:
+
+```
+transition-all duration-200 hover:opacity-80 active:scale-95
+```
+
+Match or exceed `CTAButton` patterns for primary marketing actions. Links and secondary buttons still need visible hover and focus states.
+
+## Design Tokens (mandatory)
+
+All colors live in `app/globals.css`. Use token classes only — never invent values in components.
+
+**Brand CTA palette** (source: logo `#e8551c`):
+- `--cta-primary` — `#e8551c` logo orange
+- `--cta-primary-hover` — `#c94818` darker orange
+- `--cta-secondary` — `#f0732a` warm amber for gradients
+- `--cta-accent` — `#ff8c42` gradient highlight (warm, never purple)
+- `--cta-light`, `--cta-lighter` — tinted surfaces for section rhythm
+
+**Shadcn semantic tokens** (structure and typography):
+- Surfaces: `bg-background`, `bg-card`, `bg-muted`
+- Text: `text-foreground`, `text-muted-foreground`, `text-primary`
+- Borders: `border-border`, `ring-ring`
+
+**Radius:** `--radius` (0.625rem) — `rounded-lg` / `rounded-xl` for marketing cards; sharper radii for code UI.
+
+New tokens belong in `globals.css` only, never as inline hex in `.tsx` files.
+
+## Layout Primitives (mandatory)
+
+Every marketing page follows this structure:
+
+```tsx
+<main id="main-content">
+  <Section>
+    <Container>
+      {/* content */}
+    </Container>
+  </Section>
+</main>
+```
+
+- **Section** (`@/components/ui/section`) — vertical rhythm: `py-12 lg:py-16`
+- **Container** (`@/components/ui/container`) — default `max-w-6xl`, responsive horizontal padding
+- **CTAButton** (`@/components/ui/cta-button`) — primary marketing actions (gradient, hover scale, Lucide icons)
+- **Shadcn primitives** (`@/components/ui/*`) — Button, Card, Badge, etc. Do not reinvent these.
+
+Alternate section backgrounds with `bg-muted/50` or `bg-[var(--cta-lighter)]` for visual rhythm — not random colors.
+
+## Typography
+
+- **Sans:** Inter via `next/font/google` in `app/layout.tsx` — all marketing prose and headings. Use `display: 'swap'`.
+- **Mono:** JetBrains Mono via `next/font/google` — code snippets, CLI blocks, API/feature badges. Apply with `font-mono`.
+- **Roles:** one hero display size per page, section headings (`text-2xl`–`text-4xl`), body (`text-base`), supporting text (`text-sm text-muted-foreground`).
+- Prefer `font-semibold` + `text-muted-foreground` over excessive size jumps.
+- **Spacing scale only:** 4, 8, 12, 16, 24, 32, 48, 64 (Tailwind defaults). No arbitrary values like `py-[37px]`.
+
+## Craft and Motion
+
+- **Depth:** micro-shadows on elevated surfaces — not heavy border AND heavy shadow together. Layered panels echo logo nesting.
+- **Hero moments:** restrained gradients from CTA tokens (`from-[var(--cta-primary)] to-[var(--cta-secondary)]`). One accent family per section.
+- **Motion:** `tw-animate-css` / Tailwind `animate-*` only. Do not use Framer Motion unless it is in `package.json`.
+- Respect `prefers-reduced-motion` — avoid essential information conveyed only through animation.
+
+## Visual Hierarchy
+
+- Lead with content: headline → supporting copy → CTA → social proof or features.
+- Keep related content close; separate unrelated blocks with whitespace, not nested cards.
+- Use cards (`@/components/ui/card`) only when content needs a grouped surface.
+- Icons: named Lucide imports (`import { ArrowRight } from "lucide-react"`), decorative icons get `aria-hidden="true"`.
+
+## NEVER
+
+- Default Tailwind palette (`bg-blue-500`, `text-gray-800`, `border-slate-200`, etc.)
+- Generic purple SaaS accents (`#673AB7`, `bg-violet-500`, etc.) — off-brand
+- Light-gray-on-white corporate look as the default page aesthetic
+- Hardcoded hex in components (token definitions in `globals.css` only)
+- CSS modules, raw `style={{}}`, or mixed styling approaches
+- Arbitrary Tailwind values (`w-[437px]`, `text-[13px]`) unless mapped to a documented token
+- Nested cards, competing accent colors, decorative UI with no content purpose
+- Over-rounded "friendly startup" UI on code-adjacent elements — keep those sharp
+- `'use client'` unless interactivity requires it (`useState`, Radix primitives, browser APIs)
+
+## Accessibility
+
+- Semantic landmarks: `<header>`, `<main id="main-content">`, `<section>`, `<footer>`
+- Visible `:focus-visible` rings using brand orange (`--ring` in `globals.css`)
+- WCAG AA contrast for text and controls
+- Touch targets ≥ 44px on mobile CTAs
+- Use semantic HTML and labels before adding ARIA
+
+## Class Merging
+
+Always use `cn()` from `@/lib/utils` when combining conditional or override classes.
