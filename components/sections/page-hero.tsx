@@ -15,7 +15,7 @@ export function PageHero({ label, title, description, className }: PageHeroProps
       <Container size="md">
         <div className="space-y-4 text-center">
           {label && (
-            <p className="font-mono text-sm text-[var(--cta-primary)]">{label}</p>
+            <p className="font-mono text-sm text-devfest-blue">{label}</p>
           )}
           <h1 className="text-4xl font-semibold tracking-tight text-foreground lg:text-5xl">
             {title}

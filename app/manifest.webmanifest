@@ -1,9 +1,10 @@
 {
-  "name": "DevFest",
+  "name": "DevFest 2026 Quito",
   "short_name": "DevFest",
-  "description": "A brief description of your site.",
+  "description": "Patrocina DevFest 2026: Innovating Together en Quito. La conferencia tech del ecosistema Google Developer Groups en Ecuador.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1a1a",
-  "theme_color": "#e8551c"
+  "background_color": "#f0f0f0",
+  "theme_color": "#4285f4",
+  "lang": "es"
 }

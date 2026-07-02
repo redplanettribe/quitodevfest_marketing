@@ -4,90 +4,64 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: #e8551c;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* DevFest 2026 core palette */
+  --devfest-blue: #4285f4;
+  --devfest-green: #34a853;
+  --devfest-yellow: #f9ab00;
+  --devfest-red: #ea4335;
+  --devfest-halftone-blue: #57caff;
+  --devfest-halftone-green: #5cdb6d;
+  --devfest-halftone-yellow: #ffd427;
+  --devfest-halftone-red: #ff7daf;
+  --devfest-pastel-blue: #c3ecf6;
+  --devfest-pastel-green: #ccf6c5;
+  --devfest-pastel-yellow: #ffe7a5;
+  --devfest-pastel-red: #f8d8d8;
+  --devfest-off-white: #f0f0f0;
+  --devfest-black: #1e1e1e;
+
+  /* Semantic shadcn tokens — light-first */
+  --background: var(--devfest-off-white);
+  --foreground: var(--devfest-black);
+  --card: #ffffff;
+  --card-foreground: var(--devfest-black);
+  --popover: #ffffff;
+  --popover-foreground: var(--devfest-black);
+  --primary: var(--devfest-blue);
+  --primary-foreground: #ffffff;
+  --secondary: var(--devfest-pastel-blue);
+  --secondary-foreground: var(--devfest-black);
+  --muted: #e8e8e8;
+  --muted-foreground: #5f6368;
+  --accent: var(--devfest-pastel-green);
+  --accent-foreground: var(--devfest-black);
+  --destructive: var(--devfest-red);
+  --destructive-foreground: #ffffff;
+  --border: #dadce0;
+  --input: #dadce0;
+  --ring: var(--devfest-blue);
+  --chart-1: var(--devfest-blue);
+  --chart-2: var(--devfest-green);
+  --chart-3: var(--devfest-yellow);
+  --chart-4: var(--devfest-red);
+  --chart-5: var(--devfest-halftone-blue);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: var(--devfest-off-white);
+  --sidebar-foreground: var(--devfest-black);
+  --sidebar-primary: var(--devfest-blue);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--devfest-pastel-blue);
+  --sidebar-accent-foreground: var(--devfest-black);
+  --sidebar-border: #dadce0;
+  --sidebar-ring: var(--devfest-blue);
 
-  /* Brand accent colors — source: logo #e8551c */
-  --cta-primary: #e8551c;
-  --cta-primary-hover: #c94818;
-  --cta-secondary: #f0732a;
-  --cta-accent: #ff8c42;
-  --cta-light: #fef0ea;
-  --cta-lighter: #fff8f5;
-}
-
-.dark {
-  --background: oklch(0.1 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.13 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.13 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.13 0 0);
-  --secondary: oklch(0.2 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.18 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.2 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.22 0 0);
-  --input: oklch(0.22 0 0);
-  --ring: #e8551c;
-  --chart-1: oklch(0.65 0.2 40);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.13 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: #e8551c;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.2 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.22 0 0);
-  --sidebar-ring: #e8551c;
-
-  /* Brand accent colors — dark mode (logo-optimized) */
-  --cta-primary: #e8551c;
-  --cta-primary-hover: #c94818;
-  --cta-secondary: #f0732a;
-  --cta-accent: #ff8c42;
-  --cta-light: #2a1810;
-  --cta-lighter: #1a100a;
+  /* CTA aliases — mapped to DevFest blue for legacy components */
+  --cta-primary: var(--devfest-blue);
+  --cta-primary-hover: #3367d6;
+  --cta-secondary: var(--devfest-halftone-blue);
+  --cta-accent: var(--devfest-halftone-green);
+  --cta-light: var(--devfest-pastel-blue);
+  --cta-lighter: #ffffff;
 }
 
 @theme inline {
@@ -127,15 +101,26 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-
-  /* Brand CTA colors */
   --color-cta-primary: var(--cta-primary);
   --color-cta-primary-hover: var(--cta-primary-hover);
   --color-cta-secondary: var(--cta-secondary);
   --color-cta-accent: var(--cta-accent);
   --color-cta-light: var(--cta-light);
   --color-cta-lighter: var(--cta-lighter);
-
+  --color-devfest-blue: var(--devfest-blue);
+  --color-devfest-green: var(--devfest-green);
+  --color-devfest-yellow: var(--devfest-yellow);
+  --color-devfest-red: var(--devfest-red);
+  --color-devfest-halftone-blue: var(--devfest-halftone-blue);
+  --color-devfest-halftone-green: var(--devfest-halftone-green);
+  --color-devfest-halftone-yellow: var(--devfest-halftone-yellow);
+  --color-devfest-halftone-red: var(--devfest-halftone-red);
+  --color-devfest-pastel-blue: var(--devfest-pastel-blue);
+  --color-devfest-pastel-green: var(--devfest-pastel-green);
+  --color-devfest-pastel-yellow: var(--devfest-pastel-yellow);
+  --color-devfest-pastel-red: var(--devfest-pastel-red);
+  --color-devfest-off-white: var(--devfest-off-white);
+  --color-devfest-black: var(--devfest-black);
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
 
@@ -149,12 +134,11 @@
   }
 }
 
-/* Skip to content link */
 .skip-to-content {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: var(--cta-primary);
+  background: var(--devfest-blue);
   color: white;
   padding: 8px;
   text-decoration: none;
@@ -166,99 +150,78 @@
   top: 6px;
 }
 
-/* Focus styles — brand orange ring */
 :focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
 
-/* Prose styles for MDX content */
-.prose {
-  max-width: none;
-  color: hsl(var(--foreground));
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  color: hsl(var(--foreground));
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.prose h1 {
-  font-size: 2.25rem;
-  margin-bottom: 1rem;
-}
-
-.prose h2 {
-  font-size: 1.875rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.prose h3 {
-  font-size: 1.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.prose p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.prose ul,
-.prose ol {
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
-}
-
-.prose li {
-  margin-bottom: 0.5rem;
-}
-
-.prose a {
-  color: hsl(var(--primary));
-  text-decoration: underline;
-}
-
-.prose a:hover {
-  text-decoration: none;
-}
-
-.prose strong {
-  font-weight: 600;
-  color: hsl(var(--foreground));
-}
-
-.prose blockquote {
-  border-left: 4px solid hsl(var(--border));
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  font-style: italic;
-  color: hsl(var(--muted-foreground));
-}
-
-/* Hero center glow — sits behind the grid */
 .hero-glow {
   background: radial-gradient(
     ellipse 70% 60% at 50% 38%,
-    color-mix(in oklch, var(--cta-primary) 5%, transparent) 0%,
-    color-mix(in oklch, var(--cta-secondary) 3%, transparent) 38%,
+    color-mix(in srgb, var(--devfest-blue) 12%, transparent) 0%,
+    color-mix(in srgb, var(--devfest-green) 8%, transparent) 38%,
     transparent 58%
   );
 }
 
-/* Hero design grid — faint backdrop lines, radial fade */
 .hero-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklch, var(--border) 55%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklch, var(--border) 55%, transparent) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in srgb, var(--border) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 55%, transparent) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 28%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 28%, transparent 75%);
+}
+
+.hero-video-overlay {
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--devfest-off-white) 18%, transparent) 0%,
+      color-mix(in srgb, var(--devfest-off-white) 5%, transparent) 38%,
+      color-mix(in srgb, var(--devfest-off-white) 28%, transparent) 72%,
+      color-mix(in srgb, var(--devfest-off-white) 88%, transparent) 100%
+    );
+}
+
+.hero-copy-panel {
+  background: color-mix(in srgb, var(--devfest-off-white) 92%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--devfest-black) 6%, transparent),
+    0 16px 48px color-mix(in srgb, var(--devfest-black) 10%, transparent);
+}
+
+.hero-partners-strip {
+  background: color-mix(in srgb, var(--devfest-off-white) 78%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--devfest-black) 5%, transparent);
+}
+
+.hero-text-shadow {
+  text-shadow:
+    0 0 18px color-mix(in srgb, var(--devfest-off-white) 100%, transparent),
+    0 0 36px color-mix(in srgb, var(--devfest-off-white) 90%, transparent),
+    0 1px 2px color-mix(in srgb, var(--devfest-off-white) 100%, transparent);
+}
+
+.hero-text-strong {
+  text-shadow:
+    0 0 22px color-mix(in srgb, var(--devfest-off-white) 100%, transparent),
+    0 0 44px color-mix(in srgb, var(--devfest-off-white) 95%, transparent),
+    0 2px 4px color-mix(in srgb, var(--devfest-off-white) 100%, transparent),
+    0 0 1px color-mix(in srgb, var(--devfest-black) 20%, transparent);
 }

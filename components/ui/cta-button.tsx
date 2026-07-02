@@ -12,9 +12,9 @@ export interface CTAButtonProps extends React.AnchorHTMLAttributes<HTMLAnchorEle
 
 // Reusable Tailwind CSS classes for CTA buttons
 const ctaButtonVariants = {
-    primary: "bg-gradient-to-r from-[var(--cta-primary)] to-[var(--cta-secondary)] hover:from-[var(--cta-primary-hover)] hover:to-[var(--cta-accent)] text-white shadow-lg hover:shadow-xl border-0",
-    secondary: "bg-[var(--cta-primary)] hover:bg-[var(--cta-primary-hover)] text-white",
-    outline: "bg-transparent border-2 border-[var(--cta-primary)]/30 hover:border-[var(--cta-primary)]/50 hover:bg-[var(--cta-lighter)]",
+    primary: "bg-devfest-blue hover:bg-[#3367d6] text-white shadow-lg hover:shadow-xl border-0",
+    secondary: "bg-devfest-green hover:bg-devfest-halftone-green text-white",
+    outline: "bg-transparent border-2 border-devfest-blue/30 hover:border-devfest-blue/50 hover:bg-devfest-pastel-blue/50 text-foreground",
     "white-outline": "bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 hover:border-white/50",
 }
 

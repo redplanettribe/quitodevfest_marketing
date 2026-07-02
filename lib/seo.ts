@@ -26,7 +26,7 @@ export function generateSEO({
     ...(allKeywords.length > 0 ? { keywords: allKeywords } : {}),
     openGraph: {
       type: "website",
-      locale: "en_US",
+      locale: "es_EC",
       url: seoUrl,
       title: seoTitle,
       description,

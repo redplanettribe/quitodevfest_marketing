@@ -9,7 +9,7 @@ interface NavLinksProps {
 
 export function NavLinks({ className, onNavigate }: NavLinksProps) {
   return (
-    <nav className={cn("flex items-center gap-6", className)} aria-label="Main navigation">
+    <nav className={cn("flex items-center gap-6", className)} aria-label="Navegación principal">
       {mainNav.map((item) => (
         <Link
           key={item.href}

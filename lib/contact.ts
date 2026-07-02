@@ -1,6 +1,10 @@
 import { siteConfig } from "@/config/site"
+import { sponsorInquiry } from "@/config/sponsors"
 
 export const CONTACT_EMAIL = siteConfig.contactEmail
+export const CONTACT_PAGE_PATH = "/contact/"
+export const SPONSORS_PAGE_PATH = "/sponsors/"
+export const SPONSOR_FORM_URL = sponsorInquiry.formUrl
 
 interface ContactMailtoOptions {
   subject?: string
@@ -24,4 +28,18 @@ export function gmailComposeUrl({ subject, body }: ContactMailtoOptions = {}): s
   if (subject) params.set("su", subject)
   if (body) params.set("body", body)
   return `https://mail.google.com/mail/?${params.toString()}`
+}
+
+export function sponsorInquiryMailto(): string {
+  return contactMailto({
+    subject: sponsorInquiry.emailSubject,
+    body: sponsorInquiry.emailBody,
+  })
+}
+
+export function sponsorInquiryGmailUrl(): string {
+  return gmailComposeUrl({
+    subject: sponsorInquiry.emailSubject,
+    body: sponsorInquiry.emailBody,
+  })
 }

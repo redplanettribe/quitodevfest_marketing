@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import { eventConfig } from "@/config/event"
 import { siteConfig } from "@/config/site"
 import { websiteSchema } from "@/lib/schema"
 import { AccessibilitySkipLinks } from "@/components/accessibility-skip-links"
@@ -20,27 +21,29 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
   ...(siteConfig.keywords.length > 0 ? { keywords: siteConfig.keywords } : {}),
-  authors: [{ name: siteConfig.name }],
-  creator: siteConfig.name,
+  authors: [{ name: eventConfig.organizer }],
+  creator: eventConfig.organizer,
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "es_EC",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    siteName: siteConfig.shortName,
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
   alternates: {
     canonical: siteConfig.url,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
@@ -62,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${inter.className} ${jetbrainsMono.variable}`}>
+    <html lang="es" className={`${inter.className} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"

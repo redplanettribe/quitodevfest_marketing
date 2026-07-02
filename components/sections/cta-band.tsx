@@ -1,8 +1,8 @@
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, FileText } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { Container } from "@/components/ui/container"
 import { CTAButton } from "@/components/ui/cta-button"
-import { CONTACT_PAGE_PATH } from "@/lib/contact"
+import { CONTACT_PAGE_PATH, SPONSORS_PAGE_PATH } from "@/lib/contact"
 
 interface CtaBandProps {
   title?: string
@@ -10,11 +10,11 @@ interface CtaBandProps {
 }
 
 export function CtaBand({
-  title = "Ready to set your software in motion?",
-  description = "Tell us what you're building. We'll respond within one business day with next steps.",
+  title = "¿Listo para impulsar tu marca en DevFest 2026?",
+  description = "Conversemos sobre el paquete ideal para tu empresa. Te respondemos en un máximo de 2 días hábiles.",
 }: CtaBandProps) {
   return (
-    <Section className="bg-[var(--cta-lighter)]">
+    <Section className="bg-devfest-pastel-green/30">
       <Container size="md">
         <div className="rounded-xl border border-border bg-card p-8 text-center shadow-sm lg:p-12">
           <h2 className="text-2xl font-semibold text-foreground lg:text-3xl">{title}</h2>
@@ -26,10 +26,10 @@ export function CtaBand({
               iconPosition="right"
               size="lg"
             >
-              Start a project
+              Solicitar información
             </CTAButton>
-            <CTAButton href="/process/" variant="outline" size="lg">
-              See our process
+            <CTAButton href={SPONSORS_PAGE_PATH} variant="outline" icon={FileText} size="lg">
+              Ver paquetes
             </CTAButton>
           </div>
         </div>

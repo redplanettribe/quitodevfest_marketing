@@ -6,18 +6,18 @@ import { Button } from "@/components/ui/button"
 import { CTAButton } from "@/components/ui/cta-button"
 import {
   CONTACT_EMAIL,
-  projectInquiryGmailUrl,
-  projectInquiryWithTemplateMailto,
+  sponsorInquiryGmailUrl,
+  sponsorInquiryMailto,
 } from "@/lib/contact"
 
 export function ContactEmailActions() {
   async function copyEmail() {
     try {
       await navigator.clipboard.writeText(CONTACT_EMAIL)
-      toast.success("Email copied", { description: CONTACT_EMAIL })
+      toast.success("Correo copiado", { description: CONTACT_EMAIL })
     } catch {
-      toast.error("Could not copy email", {
-        description: `Copy it manually: ${CONTACT_EMAIL}`,
+      toast.error("No se pudo copiar el correo", {
+        description: `Cópialo manualmente: ${CONTACT_EMAIL}`,
       })
     }
   }
@@ -26,7 +26,7 @@ export function ContactEmailActions() {
     <div className="mx-auto flex max-w-xl flex-col items-center gap-6">
       <div className="flex w-full flex-col gap-3 sm:flex-row sm:justify-center">
         <CTAButton
-          href={projectInquiryGmailUrl}
+          href={sponsorInquiryGmailUrl()}
           icon={ExternalLink}
           iconPosition="right"
           size="lg"
@@ -34,16 +34,16 @@ export function ContactEmailActions() {
           rel="noopener noreferrer"
           className="w-full justify-center sm:w-auto"
         >
-          Compose in Gmail
+          Escribir en Gmail
         </CTAButton>
         <CTAButton
-          href={projectInquiryWithTemplateMailto}
+          href={sponsorInquiryMailto()}
           icon={Mail}
           size="lg"
           variant="outline"
           className="w-full justify-center sm:w-auto"
         >
-          Open email app
+          Abrir app de correo
         </CTAButton>
       </div>
 
@@ -54,12 +54,8 @@ export function ContactEmailActions() {
         className="gap-2 transition-all duration-200 hover:opacity-80 active:scale-95"
       >
         <Copy className="h-4 w-4" aria-hidden="true" />
-        Copy {CONTACT_EMAIL}
+        Copiar {CONTACT_EMAIL}
       </Button>
-
-      <p className="text-center text-sm text-muted-foreground">
-        No mail app configured? Use Gmail or copy the address above.
-      </p>
     </div>
   )
 }
