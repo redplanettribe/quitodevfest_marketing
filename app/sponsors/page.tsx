@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/sections/cta-band"
 export const metadata = generateSEO({
   title: "Paquetes de patrocinio",
   description:
-    "Conoce los paquetes de patrocinio de DevFest 2026 Quito: Platino, Oro, Plata y Comunidad. Visibilidad, activaciones y acceso a la audiencia tech de Ecuador.",
+    "Conoce los paquetes de patrocinio de DevFest 2026 Quito: Platino, Oro y PYME. Visibilidad, activaciones y acceso a la audiencia tech de Ecuador.",
   url: "/sponsors/",
   keywords: ["paquetes patrocinio", "sponsorship DevFest", "patrocinar evento tech"],
 })

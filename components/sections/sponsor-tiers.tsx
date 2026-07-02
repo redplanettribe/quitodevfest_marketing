@@ -1,4 +1,4 @@
-import { Check, Minus } from "lucide-react"
+import { Check, Mail, Minus } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { Container } from "@/components/ui/container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,7 +11,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { deliverableMatrix, sponsorTiers } from "@/config/sponsors"
+import { deliverableMatrix, sponsorInquiry, sponsorTiers } from "@/config/sponsors"
+import { sponsorTierInquiryMailto } from "@/lib/contact"
 import { cn } from "@/lib/utils"
 
 function CellValue({ value }: { value: boolean | string }) {
@@ -39,7 +40,7 @@ export function SponsorTiers() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {sponsorTiers.map((tier) => (
             <Card
               key={tier.id}
@@ -57,9 +58,14 @@ export function SponsorTiers() {
               )}
               <CardHeader className="pb-2 text-center">
                 <CardTitle className="text-xl">{tier.name}</CardTitle>
-                {tier.priceLabel && (
-                  <p className="text-2xl font-semibold text-devfest-blue">{tier.priceLabel}</p>
-                )}
+                <a
+                  href={sponsorTierInquiryMailto(tier.name)}
+                  className="mt-2 inline-flex items-center justify-center gap-1.5 text-lg font-semibold text-devfest-blue underline-offset-4 transition-colors hover:text-[#3367d6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-devfest-blue focus-visible:ring-offset-2"
+                  aria-label={`${sponsorInquiry.inquiryCtaLabel} sobre el paquete ${tier.name} por correo`}
+                >
+                  <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  {sponsorInquiry.inquiryCtaLabel}
+                </a>
                 <p className="text-sm text-muted-foreground">{tier.description}</p>
               </CardHeader>
               <CardContent className="flex flex-1 flex-col">

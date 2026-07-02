@@ -1,5 +1,9 @@
 import { siteConfig } from "@/config/site"
-import { sponsorInquiry } from "@/config/sponsors"
+import {
+  sponsorInquiry,
+  sponsorTierInquiryBody,
+  sponsorTierInquirySubject,
+} from "@/config/sponsors"
 
 export const CONTACT_EMAIL = siteConfig.contactEmail
 export const CONTACT_PAGE_PATH = "/contact/"
@@ -41,5 +45,12 @@ export function sponsorInquiryGmailUrl(): string {
   return gmailComposeUrl({
     subject: sponsorInquiry.emailSubject,
     body: sponsorInquiry.emailBody,
+  })
+}
+
+export function sponsorTierInquiryMailto(tierName: string): string {
+  return contactMailto({
+    subject: sponsorTierInquirySubject(tierName),
+    body: sponsorTierInquiryBody(tierName),
   })
 }

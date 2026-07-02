@@ -3,7 +3,6 @@ export interface SponsorTier {
   name: string
   description: string
   highlighted?: boolean
-  priceLabel?: string
   deliverables: string[]
 }
 
@@ -20,6 +19,7 @@ export interface SponsorFaqItem {
 
 export const sponsorInquiry = {
   emailSubject: "Consulta de patrocinio — DevFest 2026 Quito",
+  inquiryCtaLabel: "Solicitar información",
   emailBody: `Hola equipo de GDG Quito,
 
 Me interesa patrocinar DevFest 2026. A continuación los detalles de mi empresa:
@@ -28,14 +28,35 @@ Empresa:
 Persona de contacto:
 Correo:
 Teléfono:
-Paquete de interés (Platino / Oro / Plata / Comunidad):
+Paquete de interés (Platino / Oro / PYME):
 Objetivo del patrocinio:
 
 Quedo atento/a a su respuesta.
 
 Saludos,`,
-  formUrl: "https://forms.gle/devfest2026-patrocinios",
+  formUrl: "https://forms.gle/MnK7cZqhGF3QszT67",
   responseTime: "Respondemos en un máximo de 2 días hábiles.",
+}
+
+export function sponsorTierInquiryBody(tierName: string): string {
+  return `Hola equipo de GDG Quito,
+
+Me interesa el paquete ${tierName} para patrocinar DevFest 2026. A continuación los detalles de mi empresa:
+
+Empresa:
+Persona de contacto:
+Correo:
+Teléfono:
+Paquete de interés: ${tierName}
+Objetivo del patrocinio:
+
+Quedo atento/a a su respuesta.
+
+Saludos,`
+}
+
+export function sponsorTierInquirySubject(tierName: string): string {
+  return `Consulta de patrocinio — Paquete ${tierName} — DevFest 2026 Quito`
 }
 
 export const sponsorTiers: SponsorTier[] = [
@@ -44,13 +65,12 @@ export const sponsorTiers: SponsorTier[] = [
     name: "Platino",
     description: "Máxima visibilidad y presencia exclusiva en el evento.",
     highlighted: true,
-    priceLabel: "Consultar",
     deliverables: [
       "Logo destacado en web, app y materiales impresos",
       "Mención en apertura y cierre del evento",
       "Stand premium en zona de alto tráfico",
       "Charla o workshop patrocinado (30 min)",
-      "10 entradas VIP para tu equipo",
+      "4 entradas VIP para tu equipo",
       "Campaña dedicada en redes sociales de GDG Quito",
       "Distribución de swag en registro",
     ],
@@ -59,39 +79,25 @@ export const sponsorTiers: SponsorTier[] = [
     id: "oro",
     name: "Oro",
     description: "Alta visibilidad con espacio para activaciones de marca.",
-    priceLabel: "Consultar",
     deliverables: [
       "Logo en web, app y señalética del evento",
       "Mención en apertura del evento",
       "Stand estándar en área de patrocinadores",
       "Lightning talk patrocinado (15 min)",
-      "6 entradas para tu equipo",
+      "2 entradas VIP para tu equipo",
       "Publicación destacada en redes sociales",
     ],
   },
   {
-    id: "plata",
-    name: "Plata",
-    description: "Presencia de marca visible ante la comunidad tech.",
-    priceLabel: "Consultar",
+    id: "pyme",
+    name: "PYME",
+    description: "Presencia de marca accesible para pequeñas y medianas empresas.",
     deliverables: [
       "Logo en web y materiales digitales",
       "Logo en señalética del evento",
       "Mesa compartida en área de patrocinadores",
-      "4 entradas para tu equipo",
+      "4 entradas estándar gratuitas para tu equipo",
       "Mención en newsletter pre-evento",
-    ],
-  },
-  {
-    id: "comunidad",
-    name: "Comunidad",
-    description: "Apoya el ecosistema y conecta con desarrolladores locales.",
-    priceLabel: "Consultar",
-    deliverables: [
-      "Logo en página de patrocinadores",
-      "Mención en redes sociales",
-      "2 entradas para tu equipo",
-      "Distribución de material en registro (según disponibilidad)",
     ],
   },
 ]
@@ -100,12 +106,12 @@ export const deliverableMatrix: DeliverableRow[] = [
   {
     id: "web-logo",
     label: "Logo en sitio web",
-    tiers: { platino: true, oro: true, plata: true, comunidad: true },
+    tiers: { platino: true, oro: true, pyme: true },
   },
   {
     id: "stage-mention",
     label: "Mención en escenario principal",
-    tiers: { platino: true, oro: true, plata: false, comunidad: false },
+    tiers: { platino: true, oro: true, pyme: false },
   },
   {
     id: "booth",
@@ -113,8 +119,7 @@ export const deliverableMatrix: DeliverableRow[] = [
     tiers: {
       platino: "Premium",
       oro: "Estándar",
-      plata: "Compartido",
-      comunidad: false,
+      pyme: "Compartido",
     },
   },
   {
@@ -123,19 +128,18 @@ export const deliverableMatrix: DeliverableRow[] = [
     tiers: {
       platino: "Workshop 30 min",
       oro: "Lightning 15 min",
-      plata: false,
-      comunidad: false,
+      pyme: false,
     },
   },
   {
     id: "tickets",
     label: "Entradas para equipo",
-    tiers: { platino: "10", oro: "6", plata: "4", comunidad: "2" },
+    tiers: { platino: "4 VIP", oro: "2 VIP", pyme: "4 estándar" },
   },
   {
     id: "social",
     label: "Campaña en redes sociales",
-    tiers: { platino: "Dedicada", oro: "Destacada", plata: "Mención", comunidad: "Mención" },
+    tiers: { platino: "Dedicada", oro: "Destacada", pyme: "Mención" },
   },
 ]
 
