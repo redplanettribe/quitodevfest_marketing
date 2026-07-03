@@ -7,6 +7,7 @@ import {
 
 export const CONTACT_EMAIL = siteConfig.contactEmail
 export const CONTACT_PAGE_PATH = "/contact/"
+export const PARTICIPA_PAGE_PATH = "/participa/"
 export const SPONSORS_PAGE_PATH = "/sponsors/"
 export const SPONSOR_FORM_URL = sponsorInquiry.formUrl
 

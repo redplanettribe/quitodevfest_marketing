@@ -4,8 +4,10 @@ export interface NavItem {
 }
 
 export const mainNav: NavItem[] = [
+  { label: "Participa", href: "/participa/" },
   { label: "Patrocinadores", href: "/sponsors/" },
   { label: "Contacto", href: "/contact/" },
 ]
 
+export const PARTICIPA_PAGE_PATH = "/participa/"
 export const SPONSORS_PAGE_PATH = "/sponsors/"

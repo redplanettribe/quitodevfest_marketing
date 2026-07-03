@@ -11,6 +11,7 @@ export const eventConfig = {
     "https://gdg.community.dev/events/details/google-gdg-quito-presents-devfest-2026-innovating-together/",
   registrationUrl:
     "https://gdg.community.dev/events/details/google-gdg-quito-presents-devfest-2026-innovating-together/",
+  callForSpeakersUrl: "https://sessionize.com/build-with-ai-epn-copy",
   ticketingPlatform: "Multi-Track Ticketing (m3t)",
   ticketingUrl: "https://multiticketing.com/",
   social: {

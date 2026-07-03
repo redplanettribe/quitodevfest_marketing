@@ -1,9 +1,12 @@
 import {
   Award,
   Briefcase,
+  CalendarCheck,
   Handshake,
   Megaphone,
+  MessageCircle,
   Rocket,
+  Star,
   Users,
   type LucideIcon,
 } from "lucide-react"
@@ -63,6 +66,33 @@ export const sponsorValueProps: ValuePropItem[] = [
     description:
       "Conecta con otras empresas del ecosistema que podrían adoptar, integrar o recomendar tus productos y servicios.",
     icon: Handshake,
+  },
+]
+
+export const ticketingFeatures: ValuePropItem[] = [
+  {
+    title: "Chat en el evento",
+    description:
+      "Conversa con otros asistentes y el equipo organizador en tiempo real, sin salir de la plataforma del evento.",
+    icon: MessageCircle,
+  },
+  {
+    title: "Agenda y reservas",
+    description:
+      "Explora charlas y talleres, reserva tu lugar en sesiones con cupo limitado y arma tu propio recorrido.",
+    icon: CalendarCheck,
+  },
+  {
+    title: "Reseñas de sesiones",
+    description:
+      "Comparte tu opinión sobre las charlas que viviste y ayuda a mejorar la experiencia para toda la comunidad.",
+    icon: Star,
+  },
+  {
+    title: "Networking",
+    description:
+      "Conecta con perfiles afines, descubre quién asiste y amplía tu red dentro del ecosistema tech ecuatoriano.",
+    icon: Users,
   },
 ]
 
